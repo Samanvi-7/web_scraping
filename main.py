@@ -6,10 +6,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 import pandas as pd 
 import os
+import urllib.parse
 
 
-search=input("Enter the product you want to search: ")
-search_format=search.replace(' ','+')
+search=input("Enter the product you want to search: ").strip()
+search_format=urllib.parse.quote(search)  #encodes the input for url
 
 base_url = 'https://www.kindlife.in/?match=all&subcats=Y&pcode_from_q=Y&pshort=Y&pfull=Y&pname=Y&pkeywords=Y&search_performed=Y'
 search_url =f'{base_url}&q={search_format}&dispatch=products.search'
